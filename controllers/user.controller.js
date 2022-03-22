@@ -71,14 +71,15 @@ const userPut = async (req = request,res = response) => {
 const userDelete = async(req = request,res = response) => {
 
     const id = req.params.id;
-
-    //Borrar fisicamente
-    //const user = await User.findByIdAndDelete(id);
+    //Borrar fisicamente const user = await User.findByIdAndDelete(id);
+    
     const user = await User.findByIdAndUpdate(id, {estado: false})
+    const userAuth = req.userAuth;
 
     res.json({
         msg: 'DELETE api - Controller',
-        user
+        user,
+        userAuth
     });
 }
 
